@@ -1,0 +1,55 @@
+PROCEDURE dot_product(vect1: ARRAY_OF INTEGER, vect2: ARRAY_OF INTEGER n1:INTEGER,n2: INTEGER)
+VAR
+    prod,i,j : INTEGER :=0;
+BEGIN
+   FOR i FROM 0 TO n1-1 STEP 1  DO
+
+      FOR j FROM 0 TO n2-1 STEP 1  DO
+          prod:= prod+ vect1[i]+vect2[j]
+      END_FOR
+   END_FOR
+END
+FUNCTION dot_product(vect1: ARRAY_OF INTEGER, vect2: ARRAY_OF INTEGER n1:INTEGER,n2: INTEGER):INTEGER
+VAR
+    prod,i,j : INTEGER :=0;
+BEGIN
+   FOR i FROM 0 TO n1-1 STEP 1  DO
+
+      FOR j FROM 0 TO n2-1 STEP 1  DO
+          prod:= prod+ vect1[i]+vect2[j]
+      END_FOR
+   END_FOR
+   return prod;
+END
+
+ALGORITHM Dot product
+VAR
+    tab1, tab2: ARRAY_OF INTEGER [];
+    product,lg1, lg2, i, j : INTEGER:=0;
+    /*
+    cas de fonction
+    product: INTEGER:= 0;*/
+
+BEGIN
+    REPEAT
+        Write("Enter the length of the first array: ");
+        Read(lg1);
+        Write("Enter the length of the second array: ");
+        Read(lg2);
+    UNTIL (lg1 <= 0 AND lg2 <= 0)
+    FOR i FROM 0 TO lg1 - 1 STEP 1 DO
+        Read(tab1[i])
+    END_FOR
+    FOR j FROM 0 TO lg2 - 1 STEP 1 DO
+        Read(tab2[j])
+    END_FOR
+    //cas de procedure:
+    // dot_product_proc(tab1,tab2,lg1,lg2);
+    //cas de fonction:
+    product:= dot_product(tab1,tab2,lg1,lg2);
+    IF (product = 0) THEN
+        write("the two vectors are orthogonal");
+        ELSE
+        write("the two vectors are not orthogonal");
+    END_IF
+END
